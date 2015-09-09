@@ -1,0 +1,24 @@
+.vegas-animation-kenburnsCB {
+    -webkit-animation: kenburnsCB ease-out;
+            animation: kenburnsCB ease-out;
+}
+@-webkit-keyframes kenburnsCB {
+    0% {
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}
+@keyframes kenburnsCB {
+    0% {
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+    }
+    100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+}  
