@@ -4317,7 +4317,8 @@ if( true == false ) {
         }
 
         
-        if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation) && !G.openNoDelay ) {
+        // if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation) && !G.openNoDelay ) {
+        if( ( true ) {
           // automatically opens the touched thumbnail (to display an image or to open an album)
           if( G.O.touchAutoOpenDelay > 0 ) { 
             ThumbnailHoverOutAll();
