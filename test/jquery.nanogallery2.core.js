@@ -1960,7 +1960,7 @@ fnChangeSelectMode : null,
 
       // set gallery area really used size
       if( G.GOM.displayArea.width != G.GOM.displayAreaLast.width || G.GOM.displayArea.height != G.GOM.displayAreaLast.height ) {
-        // G.$E.conTn.width(G.GOM.displayArea.width).height(G.GOM.displayArea.height);
+        G.$E.conTn.width(G.GOM.displayArea.width).height(G.GOM.displayArea.height);
         G.GOM.displayAreaLast.width=G.GOM.displayArea.width;
         G.GOM.displayAreaLast.height=G.GOM.displayArea.height;
       }
