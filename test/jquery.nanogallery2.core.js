@@ -4338,7 +4338,7 @@ if( true == false ) {
           }
           else {
             // 2 touch scenario
-            if( !G.I[n].hovered ) {
+            if( !G.I[idx].hovered ) {
               // first touch
               ThumbnailHoverOutAll();
               ThumbnailHover(r.GOMidx);
