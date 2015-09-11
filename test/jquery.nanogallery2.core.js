@@ -4316,6 +4316,11 @@ if( true == false ) {
           return;
         }
 
+        if( G.I[idx].kind == 'albumUp' ) {
+          ThumbnailHoverOutAll();
+          ThumbnailOpen(idx);
+          return;
+        }
         
         // if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation) && !G.openNoDelay ) {
         if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation)  ) {
