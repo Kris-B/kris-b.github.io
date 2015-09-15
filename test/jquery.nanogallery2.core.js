@@ -4188,6 +4188,7 @@ console.log('handleGestureStart4');
               if( blockVert ) {
                 e.preventDefault(); // if swipe horizontaly the gallery, avoid moving page also
               }
+              
               window.requestAnimationFrame( function() {
                 if( initialTouchPos != null && lastTouchPosition != null ) {
                   var differenceInX = initialTouchPos.x - lastTouchPosition.x;
@@ -4197,6 +4198,7 @@ console.log('handleGestureStart4');
               
             }
           }
+        }
           
           
         
