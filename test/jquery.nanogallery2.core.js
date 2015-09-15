@@ -4087,7 +4087,8 @@ console.log('GalleryUserEvents');
       initialTouchPos=null,
       lastTouchPosition=null,
       currentXPosition=0,
-      initialViewport=null;
+      initialViewport=null,
+      blockVert=false;
       
 
       // Handle the start of gestures -->  click event
@@ -4163,14 +4164,49 @@ console.log('handleGestureStart4');
         lastTouchPosition = getGesturePointFromEvent(e);
 
         if( G.O.paginationSwipe && G.layout.support.pagination && G.pgMaxLinesPerPage > 0 ) {
-//          e.preventDefault(); // if swipe horizontaly the gallery, avoid moving page also
-          window.requestAnimationFrame( function() {
-            if( initialTouchPos != null && lastTouchPosition != null ) {
-              var differenceInX = initialTouchPos.x - lastTouchPosition.x;
-              G.$E.conTn.css( G.CSStransformName , 'translateX('+(currentXPosition - differenceInX)+'px)');
+        
+          var differenceInY = initialTouchPos.y - lastTouchPosition.y;
+          var differenceInX = initialTouchPos.x - lastTouchPosition.x;
+
+          if( blockVert ) {
+            window.requestAnimationFrame( function() {
+              if( initialTouchPos != null && lastTouchPosition != null ) {
+                var differenceInX = initialTouchPos.x - lastTouchPosition.x;
+                G.$E.conTn.css( G.CSStransformName , 'translateX('+(currentXPosition - differenceInX)+'px)');
+              }
+            });
+          }
+          else {
+            if( Math.abs(differenceInY) > 40 ) {
+              // only vertical scroll
+              G.$E.conTn.css( G.CSStransformName , 'translateX('+0+'px)');
             }
-          });
-        }
+            else {
+              if( Math.abs(differenceInX) > 40 ) {
+                blockVert=true;
+              }
+              if( blockVert ) {
+                e.preventDefault(); // if swipe horizontaly the gallery, avoid moving page also
+              }
+              window.requestAnimationFrame( function() {
+                if( initialTouchPos != null && lastTouchPosition != null ) {
+                  var differenceInX = initialTouchPos.x - lastTouchPosition.x;
+                  G.$E.conTn.css( G.CSStransformName , 'translateX('+(currentXPosition - differenceInX)+'px)');
+                }
+              });
+              
+            }
+          }
+          
+          
+        
+//          e.preventDefault(); // if swipe horizontaly the gallery, avoid moving page also
+          // window.requestAnimationFrame( function() {
+            // if( initialTouchPos != null && lastTouchPosition != null ) {
+              // var differenceInX = initialTouchPos.x - lastTouchPosition.x;
+              // G.$E.conTn.css( G.CSStransformName , 'translateX('+(currentXPosition - differenceInX)+'px)');
+            // }
+          // });
 
       }.bind(this);
 
@@ -4202,7 +4238,7 @@ console.log('handleGestureStart4');
 
         // allow text + image selection again
         G.$E.base.addClass('unselectable').find('*').attr('draggable', 'true').attr('unselectable', 'off');
-
+blockVert=false;
         GestureEndAction(e);
 
       }.bind(this);
