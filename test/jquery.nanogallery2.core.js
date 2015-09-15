@@ -487,6 +487,9 @@ galleryDisplayMode : 'fullContent',  // pagination, fullContent, moreButton*
 galleryLayoutEngine : '',
     
     paginationSwipe: true,
+//NEW
+paginationSwipeSensibilityHor : 15,
+paginationSwipeSensibilityVert : 10,
     
 // NEW
 galleryPaginationMode : 'rectangles',  // 'dots', 'rectangles', 'numbers'
@@ -764,19 +767,23 @@ fnChangeSelectMode : null,
       internal : true,
       engine : '',
       support : { pagination: false },
+      prerequisite : { imageSize: false },
       SetEngine: function() {
         if( G.layout.internal ) {
           if( G.tn.settings.getW() == 'auto' ) {
             G.layout.engine='JUSTIFIED';
             G.layout.support.pagination=false;
+            G.layout.prerequisite.imageSize=true;
             return;
           }
           if( G.tn.settings.getH() == 'auto' ) {
             G.layout.engine='CASCADING';
             G.layout.support.pagination=false;
+            G.layout.prerequisite.imageSize=true;
             return;
           }
           G.layout.support.pagination=true;
+          G.layout.prerequisite.imageSize=false;
           G.layout.engine='GRID';
         }
       }
@@ -1465,7 +1472,7 @@ fnChangeSelectMode : null,
         item.resizedContentHeight=0;
       }
 
-      ElementTranslateX(G.$E.conTn[0],0);
+      G.$E.conTn.css( G.CSStransformName , 'translateX('+0+'px)');
       G.$E.conTnParent.css({ left:0, opacity:1 });
 
       G.pgMaxNbThumbnailsPerRow=NbThumbnailsPerRow();
@@ -1491,10 +1498,6 @@ fnChangeSelectMode : null,
       G.GOM.albumIdx=albumIdx;
       var interval = GalleryRenderGetInterval();
       
-      var imageSizeRequired=false;
-      if( G.layout.engine == 'JUSTIFIED' || G.layout.engine == 'CASCADING' ) {
-        imageSizeRequired=true;
-      }
       var imageSizeRequested=false;
       var preloadImages;
 
@@ -1513,7 +1516,7 @@ fnChangeSelectMode : null,
             var w=item.thumbImg(G).width;
             var h=item.thumbImg(G).height;
             // if unknow image size and layout is not grid --> we need to retrieve the size of the images
-            if( imageSizeRequired && ( w == 0 || h == 0) ) {
+            if( G.layout.prerequisite.imageSize && ( w == 0 || h == 0) ) {
               imageSizeRequested=true;
               preloadImages+='<img src="'+item.thumbImg(G).src+'" data-idx="'+cnt+'" data-albumidx="'+G.GOM.albumIdx+'">';
             }
@@ -1538,7 +1541,7 @@ fnChangeSelectMode : null,
         idx++;
       } while( cnt < interval.len && idx < l )
 
-      if( !(imageSizeRequired && imageSizeRequested) ) {
+      if( !(G.layout.prerequisite.imageSize && imageSizeRequested) ) {
 
         // G.galleryResizeEventEnabled=true;
         // debounce( OnScrollEvent, 150, false);
@@ -2608,6 +2611,7 @@ fnChangeSelectMode : null,
       var curTn=G.GOM.items[GOMidx];
       var item=G.I[curTn.thumbnailIdx];
       if( item.kind == 'albumUp' ) { return; }
+
       item.hovered=true;
 
       if( typeof G.O.fnThumbnailHover == 'function' ) { 
@@ -2870,14 +2874,8 @@ fnChangeSelectMode : null,
     // ################################
 
     function ElementTranslateX( element, posX ) {
-      jQuery(element).css({ 'left': posX }); 
-      
-      // [TODO] - translateX needs some code refactoring...
-      //var transformStyle = 'translateX('+posX+'px)';
-      //element.style.msTransform = transformStyle;
-      //element.style.MozTransform = transformStyle;
-      //element.style.webkitTransform = transformStyle;
-      //element.style.transform = transformStyle;
+      // jQuery(element).css( G.CSStransformName , 'translateX('+posX+'px)');
+      G.$E.conTn.css( G.CSStransformName , 'translateX('+posX+'px)');
     }
     
     
@@ -3968,8 +3966,8 @@ fnChangeSelectMode : null,
       G.$E.conTn=jQuery('<div class="nGY2GallerySub"></div>').appendTo(G.$E.conTnParent);
 //      G.$E.conTnParent[0].addEventListener('click', GalleryClicked, true);
       G.$E.conTnParent.on({
-        mouseenter: GalleryMouseEnter,
-        mouseleave: GalleryMouseLeave
+//        mouseenter: GalleryMouseEnter,
+//        mouseleave: GalleryMouseLeave
       }, ".nGY2GThumbnail"); //pass the element as an argument to .on
       
       // Gallery bottom container
@@ -4086,14 +4084,10 @@ console.log('OnScrollEvent');
     function GalleryUserEvents() {
 console.log('GalleryUserEvents');
       var elementToSwipe=G.$E.conTn[0],
-      isAnimating=false,
       initialTouchPos=null,
-      lastTouchPos=null,
+      lastTouchPosition=null,
       currentXPosition=0,
-      onlyX=false,
-      startViewport=null;
-      
-      var initialViewport=0;
+      initialViewport=null;
       
 
       // Handle the start of gestures -->  click event
@@ -4121,16 +4115,6 @@ console.log('handleGestureStartNoDelay');
       this.handleGestureStart = function(e) {
 console.log('handleGestureStart');      
 
-  
-
-
-//        var eType=(jQuery(e.target).get(0).tagName).toUpperCase();
-        // class customEventHandler --> disable standard event handler
-//        if( G.containerViewerDisplayed || eType == 'A' || eType == 'INPUT' || jQuery(e.target).hasClass('customEventHandler') ) {     // detect click on custom element
-//          e.stopPropagation();
-          //e.eventDefault();
-//          return false;
-//        }
 
         if( (new Date().getTime()) - G.timeImgChanged < 400 && G.O.itemsSelectable !== true ) { 
 //          return;
@@ -4140,47 +4124,7 @@ console.log('handleGestureStart');
 //          return;
         }
         G.timeLastTouchStart=new Date().getTime();
-console.log('handleGestureStart2');
-        
-        var target = e.target || e.srcElement;
-        var found=false;
-        while( target != G.$E.conTn[0] ) {       // go element parent up to find the thumbnail element
-          // if( target.getAttribute('class') == 'nanoGalleryThumbnailContainer' ) {
-          if( jQuery(target).hasClass('nGY2GThumbnail') ) {
-            if( G.$currentTouchedThumbnail != null && !G.$currentTouchedThumbnail.is(jQuery(target)) ) {
-              ThumbnailHoverOutAll();
-            }
-            G.$currentTouchedThumbnail=jQuery(target);
-            found=true;
-          }
-          target = target.parentNode;
-        }
-console.log('handleGestureStart2a');
-        
-        if( !found ) { return; }
 
-console.log('handleGestureStart3');
-        // handle thumbnail selection
-if( true == false ) {
-        if(G.O.itemsSelectable === true){
-          if(G.isShiftPressed || G.isCtrlPressed || G.isMetaPressed || e.target.nodeName.toLowerCase() === 'input'){
-            thumbnailSelection( G.I[G.$currentTouchedThumbnail.data('index')] );
-            return false;
-          }
-          if (G.selectMode === true) {
-            thumbnailSelection( G.I[G.$currentTouchedThumbnail.data('index')] );
-            return false;
-          }
-          if (G.I[G.$currentTouchedThumbnail.data('index')].kind === G.selectMode) {
-            thumbnailSelection( G.I[G.$currentTouchedThumbnail.data('index')] );
-            return false;
-          }
-          var idxctt = G.$currentTouchedThumbnail.data('index');
-          G.touchSelectTO = setTimeout(function(){
-            thumbnailSelection( G.I[idxctt] );
-          },500);
-        }
-}
 
 console.log('handleGestureStart4');
       
@@ -4215,22 +4159,17 @@ console.log('handleGestureStart4');
       
       // Handle move gestures
       this.handleGestureMove = function (e) {
-//console.log('handleGestureMove');      
         //e.preventDefault(); // --> uncomment this to avoid viewport scrolling on touchscreen
-        lastTouchPos = getGesturePointFromEvent(e);
-        
-        if( isAnimating ) { return; }
+        lastTouchPosition = getGesturePointFromEvent(e);
 
-        if( G.O.paginationSwipe ) {
-//console.log('handleGestureMove2');      
-          if( G.layout.support.pagination && G.pgMaxLinesPerPage > 0 ) {
-            if( Math.abs(initialTouchPos.x - lastTouchPos.x) > 15 || onlyX ) {
-              e.preventDefault(); // if swipe horizontaly the gallery, avoid moving page also
-              onlyX=true;
-              isAnimating = true;
-              window.requestAnimationFrame(onAnimFrame);
+        if( G.O.paginationSwipe && G.layout.support.pagination && G.pgMaxLinesPerPage > 0 ) {
+//          e.preventDefault(); // if swipe horizontaly the gallery, avoid moving page also
+          window.requestAnimationFrame( function() {
+            if( initialTouchPos != null && lastTouchPosition != null ) {
+              var differenceInX = initialTouchPos.x - lastTouchPosition.x;
+              G.$E.conTn.css( G.CSStransformName , 'translateX('+(currentXPosition - differenceInX)+'px)');
             }
-          }
+          });
         }
 
       }.bind(this);
@@ -4244,8 +4183,6 @@ console.log('handleGestureStart4');
         // if(e.touches && e.touches.length > 0) {
         //   return;
         // }
-        isAnimating = false;
-        onlyX=false;
         
         // Remove Event Listeners
         if (window.navigator.msPointerEnabled) {
@@ -4263,197 +4200,31 @@ console.log('handleGestureStart4');
           document.removeEventListener('mouseup', this.handleGestureEnd, true);
         }
 
-if( true == false ) {
-        if(G.O.itemsSelectable === true){
-          if((new Date().getTime() - G.timeLastTouchStart) > 500 ){
-            return false;
-          }else{
-            clearTimeout(G.touchSelectTO);
-          }
-        }
-}
-
         // allow text + image selection again
         G.$E.base.addClass('unselectable').find('*').attr('draggable', 'true').attr('unselectable', 'off');
 
         GestureEndAction(e);
-        
-        initialTouchPos=null;
-        lastTouchPos=null;
-        currentXPosition=0;
-        onlyX=false;
-        startViewport=null;
 
       }.bind(this);
-      
-      function OpenTouchedThumbnail(e) {
-        currentXPosition=0;
-        initialTouchPos=null;
-        lastTouchPos=null;
-        ElementTranslateX(G.$E.conTn[0],0);
-        
-        //GalleryClicked(e);
 
-        if( Math.abs(initialViewport.t-getViewport().t) > 10 ) {
-          // viewport has been scrolled vertically (touchscreen)--> action is cancelled
-//          ThumbnailHoverOut(G.$currentTouchedThumbnail);
-          G.$currentTouchedThumbnail=null;
-          G.openNoDelay=false;
-          return;
-        }
-
-        
-        
-        var r=GalleryEventRetrieveElementl(e, false);
-
-        if( r.GOMidx == -1 ) {
-          return;
-        }
-        
-        var idx=G.GOM.items[r.GOMidx].thumbnailIdx;
-        if( r.action == 'TOGGLESELECT' ) {
-          ThumbnailSelectionToggle(idx);
-          return;
-        }
-
-        if( G.I[idx].kind == 'albumUp' ) {
-          ThumbnailHoverOutAll();
-          ThumbnailOpen(idx);
-          return;
-        }
-        
-        // if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation) && !G.openNoDelay ) {
-        if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation)  ) {
-        // if( ( true ) {
-          // automatically opens the touched thumbnail (to display an image or to open an album)
-          if( G.O.touchAutoOpenDelay > 0 ) { 
-            ThumbnailHoverOutAll();
-            ThumbnailHover(r.GOMidx);
-            window.clearInterval(G.touchAutoOpenDelayTimerID);
-            G.touchAutoOpenDelayTimerID=window.setInterval(function(){
-              window.clearInterval(G.touchAutoOpenDelayTimerID);
-              if( Math.abs(initialViewport.t-getViewport().t) > 10 ) {
-                // viewport has been scrolled after hover effect delay (touchscreen)--> open is cancelled
-                G.openNoDelay=false;
-                G.$currentTouchedThumbnail=null;
-                ThumbnailHoverOut(r.GOMidx);
-              }
-              else {
-                ThumbnailOpen(idx);
-              }
-            }, G.O.touchAutoOpenDelay);
-          }
-          else {
-            // 2 touch scenario
-            if( !G.I[idx].hovered ) {
-              // first touch
-              ThumbnailHoverOutAll();
-              ThumbnailHover(r.GOMidx);
-            }
-            else {
-              // second touch
-              ThumbnailOpen(idx);
-            }
-          }
-        }
-        else {
-          ThumbnailOpen(idx);
-//OpenThumbnail(n);
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        return;
-        
-        
-        if( G.containerViewerDisplayed || G.$currentTouchedThumbnail == null ) {
-          G.$currentTouchedThumbnail=null;
-          G.openNoDelay=false;
-          return;
-        }
-
-        if( Math.abs(initialViewport.t-getViewport().t) > 10 ) {
-          // viewport has been scrolled (touchscreen)--> open is cancelled
-          ThumbnailHoverOut(G.$currentTouchedThumbnail);
-          G.$currentTouchedThumbnail=null;
-          G.openNoDelay=false;
-          return;
-        }
-        
-        var $t=G.$currentTouchedThumbnail;
-        var n=$t.data('index');
-        if( n == undefined ) {
-          G.$currentTouchedThumbnail=null;
-          G.openNoDelay=false;
-          return;
-        }
-        
-        if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation) && !G.openNoDelay ) {
-          // automatically opens the touched thumbnail (to display an image or to open an album)
-          if( G.O.touchAutoOpenDelay > 0 ) { 
-            ThumbnailHoverOutAll();
-            ThumbnailHover($t);
-            window.clearInterval(G.touchAutoOpenDelayTimerID);
-            G.touchAutoOpenDelayTimerID=window.setInterval(function(){
-              window.clearInterval(G.touchAutoOpenDelayTimerID);
-              if( Math.abs(initialViewport.t-getViewport().t) > 10 ) {
-                // viewport has been scrolled after hover effect delay (touchscreen)--> open is cancelled
-                G.openNoDelay=false;
-                G.$currentTouchedThumbnail=null;
-                ThumbnailHoverOut($t);
-              }
-              else {
-                OpenThumbnail(n);
-              }
-            }, G.O.touchAutoOpenDelay);
-          }
-          else {
-            // 2 touch scenario
-            if( !G.I[n].hovered ) {
-              // first touch
-              ThumbnailHoverOutAll();
-              ThumbnailHover($t);
-            }
-            else {
-              // second touch
-              OpenThumbnail(n);
-            }
-          }
-        }
-        else {
-          OpenThumbnail(n);
-        }
-
-
-        return;
-      }
-      
       function GestureEndAction(e) {
 console.log('GestureEndAction');
 
-        if( lastTouchPos == null || initialTouchPos == null ) {      // touchend without touchmove
+        if( lastTouchPosition == null || initialTouchPos == null ) {      // touchend without touchmove
           OpenTouchedThumbnail(e);
           return;
         }
 
-        var differenceInX = initialTouchPos.x - lastTouchPos.x;
-        var differenceInY = initialTouchPos.y - lastTouchPos.y;
+        var differenceInX = initialTouchPos.x - lastTouchPosition.x;
+        var differenceInY = initialTouchPos.y - lastTouchPosition.y;
         currentXPosition = currentXPosition - differenceInX;
         if( G.O.paginationSwipe && G.layout.support.pagination && G.pgMaxLinesPerPage > 0 ) {
           // pagination
-          if(  (Math.abs(differenceInX) > 40 && Math.abs(initialViewport.t-getViewport().t) <= 10) ) {
+          if(  (Math.abs(differenceInX) > 40 && Math.abs(initialViewport.t-getViewport().t) <= G.O.paginationSwipeSensibilityVert ) ) {
             G.$currentTouchedThumbnail=null;
             currentXPosition=0;
             initialTouchPos=null;
-            lastTouchPos=null;
+            lastTouchPosition=null;
             ThumbnailHoverOutAll();
             if( differenceInX < -40 ) {
               paginationPreviousPage();
@@ -4472,6 +4243,87 @@ console.log('GestureEndAction');
         return;
       }
 
+      
+      function OpenTouchedThumbnail(e) {
+        currentXPosition=0;
+        initialTouchPos=null;
+        lastTouchPosition=null;
+
+        G.$E.conTn.css( G.CSStransformName , 'translateX('+0+'px)');
+
+        
+        if( Math.abs(initialViewport.t-getViewport().t) > G.O.paginationSwipeSensibilityVert ) {
+          // viewport has been scrolled vertically (touchscreen)--> action is cancelled
+//          ThumbnailHoverOut(G.$currentTouchedThumbnail);
+          G.$currentTouchedThumbnail=null;
+          G.openNoDelay=false;
+          return;
+        }
+
+        
+        
+        var r=GalleryEventRetrieveElementl(e, false);
+
+        if( r.GOMidx == -1 ) {
+          return;
+        }
+        
+        var idx=G.GOM.items[r.GOMidx].thumbnailIdx;
+        if( r.action == 'TOGGLESELECT' ) {
+console.log('TOGGLESELECT');
+          ThumbnailSelectionToggle(idx);
+          return;
+        }
+
+        if( G.I[idx].kind == 'albumUp' ) {
+          ThumbnailOpen(idx);
+          return;
+        }
+        
+        // if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation) && !G.openNoDelay ) {
+        if( ( G.curNavLevel == 'l1' && G.O.touchAnimationL1 !== undefined ? G.O.touchAnimationL1: G.O.touchAnimation)  ) {
+        // if( ( true ) {
+          // automatically opens the touched thumbnail (to display an image or to open an album)
+          if( G.O.touchAutoOpenDelay > 0 ) { 
+console.log('ThumbnailHoverOutAll0');
+            ThumbnailHoverOutAll();
+            ThumbnailHover(r.GOMidx);
+            window.clearInterval(G.touchAutoOpenDelayTimerID);
+            G.touchAutoOpenDelayTimerID=window.setInterval(function(){
+              window.clearInterval(G.touchAutoOpenDelayTimerID);
+              if( Math.abs(initialViewport.t-getViewport().t) > G.O.paginationSwipeSensibilityVert ) {
+                // viewport has been scrolled after hover effect delay (touchscreen)--> open is cancelled
+                G.openNoDelay=false;
+                G.$currentTouchedThumbnail=null;
+console.log('ThumbnailHoverOut1');                
+                ThumbnailHoverOut(r.GOMidx);
+              }
+              else {
+                ThumbnailOpen(idx);
+              }
+            }, G.O.touchAutoOpenDelay);
+          }
+          else {
+            // 2 touch scenario
+            if( !G.I[idx].hovered ) {
+              // first touch
+console.log('ThumbnailHoverOutAll2');                
+              ThumbnailHoverOutAll();
+              ThumbnailHover(r.GOMidx);
+            }
+            else {
+              // second touch
+              ThumbnailOpen(idx);
+            }
+          }
+        }
+        else {
+          ThumbnailOpen(idx);
+//OpenThumbnail(n);
+        }
+      }
+      
+
       function getGesturePointFromEvent(e) {
         var point = {};
 
@@ -4487,17 +4339,28 @@ console.log('GestureEndAction');
         return point;
       }
       
-      function onAnimFrame() {
-        if(!isAnimating) { return; }
-        
-        if( G.layout.support.pagination && G.pgMaxLinesPerPage > 0 ) {
-          var differenceInX = initialTouchPos.x - lastTouchPos.x;
-          ElementTranslateX(elementToSwipe,currentXPosition - differenceInX);
+
+      
+      
+      function ThumbnailOnMouseenter(e) {
+        if( G.containerViewerDisplayed ) { return; }
+        var target = e.target || e.srcElement;
+        // if( target.getAttribute('class') == 'nanoGalleryThumbnailContainer' ) {
+        if( jQuery(target).hasClass('nanoGalleryThumbnailContainer') ) {
+          //if( G.$currentTouchedThumbnail == null ) {
+            ThumbnailHover(jQuery(target));
+          //}
         }
-
-        isAnimating = false;
       }
-
+      
+      function ThumbnailOnMouseleave(e) {
+        var target = e.target || e.srcElement;
+        if( jQuery(target).hasClass('nanoGalleryThumbnailContainer') ) {
+        // if( target.getAttribute('class') == 'nanoGalleryThumbnailContainer' ) {
+          ThumbnailHoverOut(jQuery(target));
+        }
+      }
+      
       
       // Check if MS pointer events are supported.
       if (window.navigator.msPointerEnabled) {
@@ -4522,8 +4385,10 @@ console.log('GestureEndAction');
       }
       
       // MOUSE OVER
-//      elementToSwipe.addEventListener('mouseenter', ThumbnailOnMouseenter, true);
-//      elementToSwipe.addEventListener('mouseleave', ThumbnailOnMouseleave, true);
+      // elementToSwipe.addEventListener('mouseenter', ThumbnailOnMouseenter, true);
+      // elementToSwipe.addEventListener('mouseleave', ThumbnailOnMouseleave, true);
+      elementToSwipe.addEventListener('mouseenter', GalleryMouseEnter, true);
+      elementToSwipe.addEventListener('mouseleave', GalleryMouseLeave, true);
       // $(elementToSwipe).on({
         // mouseenter: GalleryMouseEnter,
         // mouseleave: GalleryMouseLeave
