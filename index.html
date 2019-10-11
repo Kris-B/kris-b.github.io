@@ -1,440 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+    <head>
+        <title>Christophe Brisbois - personal page</title>
+				<meta name="description" content="Personal Page">
+				<meta name="author" content="Christophe Brisbois">
+				<meta name="keywords" content="Christophe Brisbois - personal page" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>Chris - Personal Page</title>
-  <meta name="description" content="Personal Page">
-  <meta name="author" content="Christophe Brisbois">
-  <meta name="keywords" content="Chris - Personal Page" />
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
 
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!-- <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"> -->
-    <link href="http://fonts.googleapis.com/css?family=Oswald&text=nanogallery2GALLERYSID4tsvidPh" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'> -->
+				<link href="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/jquery.nanogallery2.min.js"></script>
+				
+        <link href="https://fonts.googleapis.com/css?family=Saira+Condensed:800&display=swap" rel="stylesheet">        
 
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+				<!-- Favicon
+				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+				<link rel="icon" type="image/png" href="images/favicon.ico">
+        
+        
+        <style>
+          .uk-animation-kenburns {
+            animation-duration: 60s !important;
+          }        
+          
+          body * {
+            color: #faed26 !important;
+          }
+          
+          h1 {
+            font-family: 'Saira Condensed', sans-serif;
+            color: #faed26 !important;
+						font-size: 4em;
+          }
+          
+          .brisbois_link {
+            color: #000 !important;
+            background-color: #faed26;
+            padding: 2px 10px;
+            font-weight: bold;
+          }
+          
+          .brisbois_button2 {
+            padding: 2px 5px;
+            background-color: #FFF;
+            color: #000 !important;
+            font-size: 0.8rem;
+          }
+					
+					.uk-card-secondary p {
+						color: #fff !important;
+					}
 
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.ico">
+          .brisbois_button {
+            padding: 2px;
+          }
+          .brisbois_button svg{
+            padding: 5px;
+            background-color: #faed26;
+          }
+          .brisbois_button svg path,
+          .brisbois_button svg circle{
+            fill: #000;
+          }
+          
+          .uk-tab::before {
+            border-bottom-width: 0px !important;
+          }
+          .uk-active a{
+            border-color:#faed26 !important;
+          }
+          .uk-tab a {
+            font-size: 1.3rem;
+            font-weight: bold;
+          }
+          
+          /* ##### SCROLLBAR ##### */
+          ::-webkit-scrollbar {
+            width: 8px;
+          }
 
-  <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+          /* Track */
+          ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+          }
+           
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background: #faed26; 
+          }
 
-<style type="text/css">
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+          }          
 
-  .subTitle {
-    color: #aaa;
-  }
 
-  .myTitle {
-    font-family: 'Kalam', cursive;
-    color:#efe;
-  }
-  
-  h1 {
-    font-size: 7.0rem;
-    line-height: .9;
-  }
 
-  body {
-    background-color:#222;
-  }
+        </style>
+        
+        
+    </head>
+    <body style="overflow:hidden;">
 
-  *, h2, h3, h4, h5, h6, p { color: #fff; }
-  a:focus  { color:transparent; }
-  a:hover { color:transparent; }
-  a:link { color:transparent; }
-  a:visited { color:transparent; }
+		<div class="uk-width-1-1 uk-cover-container uk-position-cover uk-visible-toggle uk-light " tabindex="-1" uk-slideshow="ratio: false; autoplay: true; autoplay-interval: 3000; animation: fade;">
 
+			<ul class="uk-slideshow-items uk-animation-60"  uk-height-viewport uk-animation-60>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image30.jpg" alt="" uk-cover>
+           </div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns  uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image02.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image03.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image04.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image05.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image06.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image07.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image08.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image09.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image11.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image12.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image14.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image15.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image16.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image17.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image18.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image19.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image20.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image21.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image22.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image23.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image24.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image25.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image26.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image27.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image28.jpg" alt="" uk-cover>
+					</div>
+        </li>
+        <li>
+					<div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left uk-animation-slow">
+						<img src="images/image29.jpg" alt="" uk-cover>
+					</div>
+        </li>
+			</ul>
+
+			<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+			<div class=" uk-position-cover uk-margin uk-margin-large-left uk-margin-large-right uk-padding"  style="border:8px solid #faed26;">
+				<h1>Christophe Brisbois</h1>
+			</div>
+
+		</div>
+		
+		
+    <div class="uk-padding-small uk-margin-xlarge-left uk-margin-large-right" style="bottom: 35px; position: absolute;top:200px; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
+      <div class="" style="transform: scaleX(-1);padding-left:20px;">
+
+				<ul uk-tab data-uk-tab="{connect:'#my-id'}">
+					<li class="uk-active"><a href="#"><b>job</b></a></li>
+					<li><a href="#" id="button_nanogallery">photography</a></li>
+					<li><a href="#">open source</a></li>
+				</ul>
       
-  .roundedImage {
-    overflow:hidden;
-    -webkit-border-radius:50px;
-    -moz-border-radius:50px;
-    border-radius:50px;
-    width:100px;
-    height:100px;
-    box-shadow: 6px 6px 6px black;
-  }
-  
-  .fa {
-    /* color:#6e6; *
-  }
- 
-  
-</style>  
+				<ul id="my-id" class="uk-switcher uk-margin uk-overflow-auto">
+					<li class="uk-overflow-auto">
+						<h2 style="color:#fff !important;font-weight:bold;">IT Project manager</h2>
+						<h3>ECM - B2B - Payment - BI 
+						<br>
+						Financial Services - Transportation - Healthcare - Software Industry
+						</h3>
+					</li>
+					
+					<li>
+						<div class="uk-width-expand" style="width:100%;overflow:hidden;">
+							<div class="uk-width-expandX" style="width:100%;overflow:hidden;" id="nanogallery2"></div>
+						</div>
+					</li>
+					
+					<li>
+						<div class="uk-child-width-1-4@m uk-grid-small uk-grid-match" uk-grid>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										Urban project map
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/Kris-B/carte_interactive_urbanisme" target="_blank">source code</a>
+										<a class="brisbois_button2" href="https://urbanicc.fr/index.php/carte-interactive/" target="_blank">demo</a>
+										<br>
+										Interactive map using JSON / GEOJSON / Leaflet / OpenStreetMap [Javascript]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanogallery2
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/nanostudio-org/nanogallery2" target="_blank">source code</a>
+										<a class="brisbois_button2" href="https://nanogallery2.nanostudio.org/" target="_blank">demo</a>
+										<br>
+										A modern photo / video gallery and lightbox [Javascript]
+									</p>
+								</div>
+							</div>
 
-  
-</head>
-<body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!--
-  <div class="u-full-width" style="height:1646px;background:url(images/venise.jpg) no-repeat 0px 0px;background-position: center center;background-attachment: fixed;background-size: cover;">
-  <div class="u-full-width" style="height:1646px;background:url(images/DSC_5887.jpg) no-repeat 0px 0px;background-position: center center;background-attachment: fixed;background-size: cover;">
-  -->
-  <div class="u-full-width" id="imageTop" style="max-height:3200;background-position: center center;background-attachment: fixed;background-size: cover;">
-    <div class="container">
-      <div class="row" style="margin-top: 0%; padding-top:15%;">
-        <div class="twelve columns" >
-              &nbsp;
-        </div>
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanogallery2 portable
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://nano.gallery/" target="_blank">homepage</a>
+										<br>
+										nanogallery2 without installation [PHP + Javascript]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoPhotosProvider2
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/nanostudio-org/nano_photos_provider2" target="_blank">source code</a>
+										<a class="brisbois_button2" href="https://nanophotosprovider2.nanostudio.org/" target="_blank">demo</a>
+										<br>
+										Application for publishing your photos from your web server [PHP]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoGP2
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/nanostudio-org/nanogp2" target="_blank">source code</a>
+										<br>
+										Allows nanogallery2 to access Google Photos content [Google Photos API + PHP]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoGP
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/nanostudio-org/nanogp" target="_blank">source code</a>
+										<br>
+										Allows nanogallery2 to access Google Photos content [PHP]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoGPVisibility
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/Kris-B/nanoGPVisibility" target="_blank">source code</a>
+										<br>
+										Manage the visibility of your photo albums on Google Photos [PHP]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoGALLERY
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/Kris-B/nanoGALLERY" target="_blank">source code</a>
+										<a class="brisbois_button2" href="https://nanogallery.brisbois.fr" target="_blank">demo</a>
+										<br>
+										A touch enabled and fully responsive image gallery with justified, cascading and grid layout [Javascript]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoPhotosProvider
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/Kris-B/nanoPhotosProvider" target="_blank">source code</a>
+										<a class="brisbois_button2" href="http://nanophotosprovider.herokuapp.com/demonstration/heroku.html" target="_blank">demo</a>
+										<br>
+										Application for publishing your self-hosted photos simply and automatically to nanoGALLERY [PHP]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoGALLERY4GS
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/Kris-B/nanoGALLERY4GS" target="_blank">source code</a>
+										<br>
+										An easy to implement image gallery to display albums/images stored in Picasa/Google+ or in Flickr. Plugin for GetSimple CMS. [PHP + Javascript]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										nanoSLIDER4GS
+									</h3>
+									<p>
+										<a class="brisbois_button2" href="https://github.com/Kris-B/nanoSLIDER4GS" target="_blank">source code</a>
+										<br>
+										A simple to use portage of the NIVO SLIDER to GetSimple CMS. [PHP + Javascript]
+									</p>
+								</div>
+							</div>
+							
+							<div>
+								<div class="uk-padding-small uk-card uk-card-secondary uk-card-body ">
+									<h3 class="uk-card-title uk-margin-small">
+										and more
+									</h3>
+									<p>
+										...
+									</p>
+								</div>
+							</div>
+							
+							
+						</div>
+					 
+					</li>
+				</ul>
       </div>
-      <div class="row" style="margin-top: 0%; padding-top:5%;padding-bottom:2%;background-color: rgba(35, 203, 153, 0.2);">
-        <div class="four columns" >
-          <div class="roundedImage" style="background:url(images/brisbois.jpg) no-repeat 0px 0px;margin-top:7px;margin-left:auto; margin-right:0;" >
-              &nbsp;
-          </div>
-        </div>
-        <div class="eight columns">
-          <h1 class="myTitle" style="text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;">Christophe<br>Brisbois</h1>
-          <h4 class="myTitle" style="color:#23CB99;text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;">Personal Page</h4>
-          <p class="myTitle" style="font-size:1.5em;text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;">Hello! This is my personal page where I enjoy sharing some of my hobbies.</p>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 0%; padding-top:5%;padding-bottom:45%;">
-        <div class="twelve columns" style="text-align:center;">
-          <a href="https://fr.linkedin.com/in/christophebrisbois/fr" target="_blank"><span class="fa-stack fa-3x">
-             <i class="fa fa-circle fa-stack-2x" style="text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;"></i>
-            <i class="fa fa-linkedin fa-stack-1x fa-inverse" style="color:#000;"></i>
-          </span></a>
-          <a href="https://github.com/Kris-B" target="_blank"><span class="fa-stack fa-3x">
-            <i class="fa fa-circle fa-stack-2x" style="text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse" style="color:#000;"></i>
-          </span></a>
-          <a href="https://plus.google.com/u/0/+ChristopheBrisbois" target="_blank"><span class="fa-stack fa-3x">
-            <i class="fa fa-circle fa-stack-2x" style="text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;"></i>
-            <i  class="fa fa-google-plus fa-stack-1x fa-inverse" style="color:#000;"></i>
-          </span></a>
-          <a href="https://www.flickr.com/photos/kris_b/" target="_blank"><span class="fa-stack fa-3x">
-            <i class="fa fa-circle fa-stack-2x" style="text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;"></i>
-            <i class="fa fa-flickr fa-stack-1x fa-inverse" style="color:#000;"></i>
-          </span></a>
-          <a href="https://fr-fr.facebook.com/christophe.brisbois" target="_blank"><span class="fa-stack fa-3x">
-            <i class="fa fa-circle fa-stack-2x" style="text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;"></i>
-            <i class="fa fa-facebook-official fa-stack-1x fa-inverse" style="color:#000;"></i>
-          </span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row" style="margin-top: 25%">
-      <div class="twelve columns">
-        <h2 style="color:#23CB99;"><i class="fa fa-vcard-o"></i> Job</h2>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="ten columns">
-        <p>
-          <b>IT Project manager: ECM - B2B - Payment - BI</b>
-          <br>
-          <span class="subTitle">
-            Financial Services - Transportation - Healthcare - Software Industry
-          </span>
-        </p>
-      </div>
-      <div class="two columns" style="text-align:center;">
-        <a href='https://fr.linkedin.com/in/christophebrisbois/fr'><span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-arrow-right fa-stack-1x fa-inverse" style="color:#000;"></i>
-        </span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row" style="margin-top: 25%">
-      <div class="twelve columns">
-        <h2 style="color:#23CB99;"><i class="fa fa-camera"></i> Photography</h2>
-      </div>
-    </div>
-  </div>
-
-  <!--
-  <div class="u-full-width">
-    <div class="row" style="margin-top: 5%">
-      <div class="twelve columns">
-        <div id="fotorama" class="fotorama" data-auto="false" data-width="100%" data-fit="contain" data-ratio="1024/343" data-autoplay="true" data-autoplay="2000" data-nav="thumbs" data-thumbwidth="100" data-thumbheight="34" data-loop="true">
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
-  <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-        <div id="nanogallery2"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row" style="margin-top: 25%">
-      <div class="twelve columns">
-        <h2 style="color:#23CB99;"><i class="fa fa-code"></i> Coding / Open Source</h2>
-        <p>Some of my current projects:</p>
-      </div>
-    </div>
-
-	  
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://urbanicc.fr/index.php/carte-interactive/' target="_blank">
-          <div>
-            <img style="vertical-align:middle;max-height:100px;" src="images/carte_interactive.jpg" alt="Interactive map - ZAC Ivry Confluences">
-            <span style="font-size:2em;">Interactive map - ZAC Ivry Confluences</span>
-          </div>
-          <div class="subTitle">
-            Interactive map using JSON / GEOJSON / Leaflet / OpenStreetMap [Javascript]
-          </div>
-        </a>
-	    <a href='https://github.com/Kris-B/carte_interactive_urbanisme' target="_blank">
-		    <div class="subTitle">
-		    [view source code]<br>&nbsp;
-	    </div></a>
-      </div>
-    </div>
-	  
-	  
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://nanogallery2.nanostudio.org' target="_blank">
-          <div>
-            <img style="vertical-align:middle;max-height:70px;" src="logos/nanogallery2b.png" alt="nanogallery2">
-            <span style="font-size:2em;">nanogallery2</span>
-          </div>
-          <p class="subTitle">
-            A modern photo / video gallery and lightbox [Javascript]
-          </p>
-        </a>
-      </div>
-    </div>
-	  
-	  
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://nano.gallery' target="_blank">
-          <div>
-            <img style="vertical-align:middle;max-height:65px;" src="logos/nanogallery2p.png" alt="nanogallery2 portable">
-            <span style="font-size:2em;">nanogallery2 portable</span>
-          </div>
-          <p sclass="subTitle">
-            nanogallery2 without installation [PHP + Javascript]
-          </p>
-        </a>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://nanophotosprovider2.nanostudio.org' target="_blank">
-          <div>
-            <img style="vertical-align:middle;max-height:60px;" src="logos/nanophotosprovider2_logo.png" alt="nanophotosprovider">
-            &nbsp;<span style="font-size:2em;">nanoPhotosProvider2</span>
-          </div>
-          <p class="subTitle">
-             Application for publishing your photos from your web server [PHP]<br>
-          </p>
-        </a>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://github.com/nanostudio-org/nanogp' target="_blank">
-          <div>
-            <span style="font-size:2em;">nanoGP</span>
-          </div>
-          <p class="subTitle">
-             Allows nanogallery2 to access Google Photos content [PHP]<br>
-          </p>
-        </a>
-      </div>
+      
     </div>
 
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://github.com/Kris-B/nanoGPVisibility' target="_blank">
-          <div>
-            <span style="font-size:2em;">nanoGPVisibility</span>
-          </div>
-          <p class="subTitle">
-             Manage the visibility of your photo albums on Google Photos [PHP]<br>
-          </p>
-        </a>
-      </div>
-    </div>
+		<div class="uk-position-bottom-right uk-margin-large uk-margin-xlarge-right">
+			<a class="" href="https://fr.linkedin.com/in/christophebrisbois/fr" target="_blank"><span class="brisbois_button" uk-icon="icon: linkedin; ratio: 2"></span></a>
+			<a class="" href="https://github.com/Kris-B" target="_blank"><span class="brisbois_button" uk-icon="icon: github; ratio: 2"></span></a>
+			<a class="" href="https://fr-fr.facebook.com/christophe.brisbois" target="_blank"><span class="brisbois_button" uk-icon="icon: facebook; ratio: 2"></span></a>
+			<a class="" href="https://www.flickr.com/photos/kris_b/" target="_blank"><span class="brisbois_button" uk-icon="icon: flickr; ratio: 2"></span></a>
+			<a class="" href="https://twitter.com/Kris_BBBB" target="_blank"><span class="brisbois_button" uk-icon="icon: twitter; ratio: 2"></span></a>
+		</div>
 
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://nanogallery.brisbois.fr' target="_blank">
-          <h4 style="color:#fff;font-family:Oswald;">nano<span style="color:#6e6;font-family:Oswald;">GALLERY</span></h4>
-          <p class="subTitle">
-            A touch enabled and fully responsive image gallery with justified, cascading and grid layout [Javascript]<br>
-            It supports self hosted images and pulling in Flickr, Picasa and Google+ photo albums.
-          </p>
-        </a>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="twelve columns">
-        <a href='https://github.com/Kris-B/nanoPhotosProvider' target="_blank">
-          <h4 style="color:#fff;font-family:Oswald;">nano<span style="color:#6e6;font-family:Oswald;">PhotosProvider</span></h4>
-          <p class="subTitle">
-            Application for publishing your self-hosted photos simply and automatically to nanoGALLERY [PHP]
-          </p>
-        </a>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="twelve columns">
-        <a href="http://get-simple.info/extend/plugin/nanogallery4gs/630/" target="_blank">
-          <h4 style="color:#fff;font-family:Oswald;">nano<span style="color:#6e6;font-family:Oswald;">GALLERY4GS</span></h4>
-          <p class="subTitle">An easy to implement image gallery to display albums/images stored in Picasa/Google+ or in Flickr. Plugin for GetSimple CMS. [PHP + Javascript]</p>
-        </a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="twelve columns">
-        <a href="http://get-simple.info/extend/plugin/nanoslider4gs/637/" target="_blank">
-          <h4 style="color:#fff;font-family:Oswald;">nano<span style="color:#6e6;font-family:Oswald;">SLIDER4GS</span></h4>
-          <p class="subTitle">A simple to use portage of the NIVO SLIDER to GetSimple CMS. [PHP + Javascript]</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  
-  <div class="container">
-    <div class="row" style="margin-top: 25%">
-      <p>
-        <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/fr/deed.en" rel="license"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-nd/3.0/fr/88x31.png" style="border-width:0"></a>
-      </p>
-    </div>
-  </div>
-  
-  
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-
-
-  <!--
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  
-  
-  <link  href="css/vegas.min.css" rel="stylesheet">
-  <link  href="css/vegas.animationCB.css" rel="stylesheet">
-  <script src="js/vegas.min.js"></script>
-
-  <!--
-  <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-  -->
-  
-<link href="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/jquery.nanogallery2.min.js"></script>
-
-  
-  
+			
   	<script>
-      function AreaShuffle(o){ //v1.0
-          for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-          return o;
-      };
-
       jQuery(document).ready(function () {
-      
-        
-        // var items = ['venice1.jpg', 'venice2.jpg'];
-        // var item = items[Math.floor(Math.random()*items.length)];
-        //jQuery('#imageTop').css("background-image", "url(images/"+item+")");
 
-        jQuery('#imageTop').vegas({
-          slides: [
-            { src: 'images/image01.jpg' },
-            { src: 'images/image02.jpg' },
-            { src: 'images/image03.jpg' },
-            { src: 'images/image04.jpg' },
-            { src: 'images/image05.jpg' },
-            { src: 'images/image06.jpg' },
-            { src: 'images/image07.jpg' },
-            { src: 'images/image08.jpg' },
-            { src: 'images/image09.jpg' },
-            { src: 'images/image10.jpg' },
-            { src: 'images/image11.jpg' },
-            { src: 'images/image12.jpg' }
-          ],
-          timer: false,
-          shuffle: true,
-          align : 'center',
-          animation: 'kenburnsCB',
-          animationDuration : 8000
-        });
-        
-        
-        // ( G.O.picasaUseUrlCrossDomain ? 'https://photos.googleapis.com/data/feed/api/' : 'https://picasaweb.google.com/data/feed/api/');
-        var $fotoramaDiv = $('#fotorama');
-        var url = 'https://photos.googleapis.com/data/feed/api/user/111186676244625461692/albumid/5856259539659194001?alt=json&kind=photo&thumbsize=100&imgmax=d';
-        
-        jQuery.ajaxSetup({ cache: false });
-        jQuery.support.cors = true;
-        jQuery.getJSON(url, 'callback=?', function(data) {
-          var source= AreaShuffle(data.feed.entry);
-          jQuery.each( source, function(i,oneItem){
-            var itemThumbURL = oneItem.media$group.media$thumbnail[0].url;
-            var imgUrl=oneItem.media$group.media$content[0].url;
-//            $fotoramaDiv.append('<a href="'+imgUrl+'"><img src="'+itemThumbURL+'"></a>')
-          });
-//          $fotoramaDiv.fotorama();
-        })
-        .fail( function(jqxhr, textStatus, error) {
-          var err = textStatus + ', ' + error + ' ' + k + '<br><br>URL:'+url;
-          //nanoAlert("Could not retrieve Picasa/Google+ data. Error: " + err);
-        });
-      
-      
-        jQuery("#nanogallery2x").nanogallery2({
-          kind: 'flickr',
-          userID: '34858669@N00',
-          blackList:'doors|kampuchea|vietnam|thailand|laos|yunnan',
-          // photoset: 'NONE',
-          thumbnailHeight: '200', thumbnailWidth: '200',
-          galleryDisplayMode: 'rows',
-          //galleryMaxRows: 1,
-          thumbnailLabel: { display: false, position:'overImageOnBottom', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true},
-          thumbnailBorderHorizontal: 2,
-          thumbnailBorderVertical: 2,
-          // navigationFontSize: '1.0em',
-          gallerySorting: 'random',
-          galleryTheme : { thumbnail: {titleShadow : 'none', descriptionShadow : 'none'} },
-          galleryLastRowFull: true
-          //locationHash: false
-        });
-
-
-      jQuery("#nanogallery2").nanogallery2({
+			jQuery( "#button_nanogallery" ).click(function() {
+				jQuery("#nanogallery2").nanogallery2({
 
           kind: 'flickr',
           userID: '34858669@N00',
@@ -443,7 +475,7 @@
               galleryDisplayTransition: 'rotateX',
               galleryDisplayTransitionDuration: 1500,
              
-              galleryL1Mosaic : [
+              galleryL1MosaicX : [
                 { w: 4, h: 3, c: 1, r: 1 },
                 { w: 2, h: 2, c: 5, r: 1 },
                 { w: 2, h: 2, c: 7, r: 1 },
@@ -452,16 +484,16 @@
                 { w: 2, h: 2, c: 3, r: 4 }
               ],
 
-              thumbnailAlignment: 'scaled',
+              thumbnailAlignment: 'left',
 
-              thumbnailL1Height: '180', thumbnailL1Width: '220',
-              thumbnailHeight: '280', thumbnailWidth: 'auto',
+              thumbnailL1Height: '180', thumbnailL1Width: '180',
+              thumbnailHeight: 150, thumbnailWidth: 150,
               thumbnailBaseGridHeight: 80,
               
               thumbnailDisplayTransition: 'slideLeft',
-              thumbnailDisplayTransitionDuration: 600,
-              thumbnailDisplayInterval: 90,
-              galleryMaxRows: 200,
+              thumbnailDisplayTransitionDuration: 400,
+              thumbnailDisplayInterval: 60,
+              galleryMaxRows: 2,
               galleryLastRowFull : true,
               galleryDisplayMode: 'rows',
 
@@ -470,7 +502,7 @@
               thumbnailBorderHorizontal: 0,
               thumbnailBorderVertical: 0,
 
-              thumbnailL1BuildInit2: '.nGY2GThumbnailAlbumTitle_border-left_5px solid #23CB99|.nGY2GThumbnailAlbumTitle_margin_20px|\
+              thumbnailL1BuildInit2: '.nGY2GThumbnailAlbumTitle_border-left_5px solid #faed26|.nGY2GThumbnailAlbumTitle_margin_20px|\
                     title_backgroundColor_rgba(200,200,200,0.8)|title_color_#000',
 
               thumbnailL1HoverEffect2: 'label_left_-100%_0%|thumbnail_scale_1.00_0.95',
@@ -482,6 +514,7 @@
               thumbnailToolbarImage : null,
               thumbnailToolbarAlbum: null,
 
+              thumbnailL1Label: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
               thumbnailLabel: { display: false, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
               
               gallerySorting: 'random',
@@ -498,33 +531,26 @@
                 minimized: ''
               },
               touchAnimation: false
-      });      
-        
-
+					});      
+				});			
       });
-      
       
     </script>
 
 
-<script type="text/javascript">
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-39069349-2']);
+			_gaq.push(['_setDomainName', 'brisbois.fr']);
+			_gaq.push(['_setAllowLinker', true]);
+			_gaq.push(['_trackPageview']);
 
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-39069349-2']);
-	  _gaq.push(['_setDomainName', 'brisbois.fr']);
-	  _gaq.push(['_setAllowLinker', true]);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-    
-</body>
-
-
-
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+			
+    </body>
 </html>
