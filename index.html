@@ -17,7 +17,7 @@
 				<link href="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
 				<script type="text/javascript" src="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/jquery.nanogallery2.min.js"></script>
 				
-        <link href="https://fonts.googleapis.com/css?family=Saira+Condensed:800&display=swap" rel="stylesheet">        
+        <link href="https://fonts.googleapis.com/css?family=Saira+Condensed:800,400&display=swap" rel="stylesheet">        
 
 				<!-- Favicon
 				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -35,8 +35,37 @@
           
           h1 {
             font-family: 'Saira Condensed', sans-serif;
+            font-weight: 800;
             color: #faed26 !important;
 						font-size: 4em;
+          }
+          @media screen and (max-width: 960px) {
+            h1 {
+              font-size: 2em;
+            }
+          }
+          
+          .brisbois_tab {
+            top: 200px;
+          }
+          @media screen and (max-width: 960px) {
+            .brisbois_tab {
+              top: 100px;
+            }
+          }
+          
+          
+          
+          h2, h3, h4, h5, h6, p, a, .nGY2GThumbnailTitle,
+          .nGY2Navigationbar .oneItem {
+            font-family: 'Saira Condensed', sans-serif !important;
+          }
+
+
+
+          .nGY2GThumbnailTitle {
+            color: #000 !important;
+            font-weight: bold;
           }
           
           .brisbois_link {
@@ -258,7 +287,7 @@
 		</div>
 		
 		
-    <div class="uk-padding-small uk-margin-xlarge-left uk-margin-large-right" style="bottom: 35px; position: absolute;top:200px; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
+    <div class="uk-padding-small uk-margin-xlarge-left uk-margin-large-right brisbois_tab" style="bottom: 35px; position: absolute; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
       <div class="" style="transform: scaleX(-1);padding-left:20px;">
 
 				<ul uk-tab data-uk-tab="{connect:'#my-id'}">
@@ -267,8 +296,8 @@
 					<li><a href="#">open source</a></li>
 				</ul>
       
-				<ul id="my-id" class="uk-switcher uk-margin uk-overflow-auto">
-					<li class="uk-overflow-auto">
+				<ul id="my-id" class="uk-switcher uk-margin uk-overflow-autoX">
+					<li class="uk-overflow-autoX">
 						<h2 style="color:#fff !important;">Professional</h2>
 						<h4 class="uk-margin-small" style="color:#fff !important;font-weight:bold;">IT Project manager</h4>
 						<h5 class="uk-margin-small">
