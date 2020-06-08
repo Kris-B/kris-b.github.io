@@ -38,12 +38,23 @@
             font-weight: 800;
             color: #faed26 !important;
 						font-size: 4em;
-            animation: glitch 3s steps(100) infinite;
+            /* animation: glitch 3s steps(100) infinite; */
+            -webkit-text-fill-color: #fff; /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;         
+            text-shadow: 
+                4px 4px #faed26, 
+                8px 8px #000000;  
           }
           @media screen and (max-width: 960px) {
             h1 {
               font-size: 2em;
             }
+          }
+          
+          .brisbois_shadow {
+          	text-shadow: -1px -1px 0 #444, 1px -1px 0 #444, -1px 1px 0 #444, 1px 1px 0 #444;
+
           }
 
           /* thanks to Joan Leon - https://codepen.io/nucliweb/pen/QEAZaZ */
@@ -155,7 +166,7 @@
 
           
           .brisbois_tab {
-            top: 200px;
+            top: 180px;
           }
           @media screen and (max-width: 960px) {
             .brisbois_tab {
@@ -174,7 +185,7 @@
 
 
           .nGY2GThumbnailTitle {
-            color: #000 !important;
+            /* color: #000 !important; */
             font-weight: bold;
           }
           
@@ -392,34 +403,34 @@
 			<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
 			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
-			<div class=" uk-position-cover uk-margin uk-margin-large-left uk-margin-large-right uk-padding"  style="border:8px solid #faed26;">
+			<div class=" uk-position-cover uk-margin-small uk-margin-medium-left uk-margin-medium-right uk-padding"  style="border:2px solid #faed26;">
 				<h1>Christophe Brisbois</h1>
 			</div>
 
 		</div>
 		
 		
-    <div class="uk-padding-small uk-margin-xlarge-left uk-margin-large-right brisbois_tab" style="bottom: 35px; position: absolute; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
+    <div class="uk-padding-small uk-padding-remove-vertical uk-margin-large-left uk-margin-large-right brisbois_tab" style="bottom: 35px; position: absolute; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
       <div class="" style="transform: scaleX(-1);padding-left:20px;">
 
 				<ul uk-tab data-uk-tab="{connect:'#my-id'}">
-					<li class="uk-active"><a href="#"><b>about me</b></a></li>
-					<li><a href="#" id="button_nanogallery">photography</a></li>
-					<li><a href="#">open source</a></li>
+					<li class="uk-active"><a href="#" class="uk-heading-large brisbois_shadow"><b>about me</b></a></li>
+					<li><a href="#" class="uk-heading-large brisbois_shadow" id="button_nanogallery">photography</a></li>
+					<li><a href="#" class="uk-heading-large brisbois_shadow">open source</a></li>
 				</ul>
       
 				<ul id="my-id" class="uk-switcher uk-margin uk-overflow-autoX">
 					<li class="uk-overflow-autoX">
 						<h2 style="color:#fff !important;">Professional</h2>
 						<h4 class="uk-margin-small" style="color:#fff !important;font-weight:bold;">IT Project manager</h4>
-						<h5 class="uk-margin-small">
+						<h4 class="uk-margin-small uk-text-lead">
               ECM - B2B - Payment - BI - Data
               <br>
               Financial Services - Transportation - Healthcare - Software Industry
-            </h5>
+            </h4>
             <br>
 						<h2 class="uk-margin-small" style="color:#fff !important;">Other activities</h2>
-						<h4 class="uk-margin-small">
+						<h4 class="uk-margin-small uk-text-lead">
               member / sponsor : 
               <a href="https://urbanicc.fr" target="_blank">URBANICC</a>, 
               <a href="https://www.fcpe.asso.fr/" target="_blank">FCPE</a>, 
@@ -606,15 +617,15 @@
       
     </div>
 
-		<div class="uk-position-bottom-right uk-margin-large uk-margin-xlarge-right">
-			<a class="" href="https://fr.linkedin.com/in/christophebrisbois/fr" target="_blank"><span class="brisbois_button" uk-icon="icon: linkedin; ratio: 2"></span></a>
-			<a class="" href="https://github.com/Kris-B" target="_blank"><span class="brisbois_button" uk-icon="icon: github; ratio: 2"></span></a>
-			<a class="" href="https://www.instagram.com/christophe_brisbois/" target="_blank"><span class="brisbois_button" uk-icon="icon: instagram; ratio: 2"></span></a>
-			<a class="" href="https://fr-fr.facebook.com/christophe.brisbois" target="_blank"><span class="brisbois_button" uk-icon="icon: facebook; ratio: 2"></span></a>
+		<div class="uk-position-top-right uk-margin-large uk-margin-xlarge-right">
+			<a class="" href="https://fr.linkedin.com/in/christophebrisbois/fr" target="_blank"><span class="brisbois_button" uk-icon="icon: linkedin; ratio: 1.4"></span></a>
+			<a class="" href="https://github.com/Kris-B" target="_blank"><span class="brisbois_button" uk-icon="icon: github; ratio: 1.4"></span></a>
+			<a class="" href="https://www.instagram.com/christophe_brisbois/" target="_blank"><span class="brisbois_button" uk-icon="icon: instagram; ratio: 1.4"></span></a>
+			<a class="" href="https://fr-fr.facebook.com/christophe.brisbois" target="_blank"><span class="brisbois_button" uk-icon="icon: facebook; ratio: 1.4"></span></a>
 			<!--
 			<a class="" href="https://www.flickr.com/photos/kris_b/" target="_blank"><span class="brisbois_button" uk-icon="icon: flickr; ratio: 2"></span></a>
 			-->
-			<a class="" href="https://twitter.com/Kris_BBBB" target="_blank"><span class="brisbois_button" uk-icon="icon: twitter; ratio: 2"></span></a>
+			<a class="" href="https://twitter.com/Kris_BBBB" target="_blank"><span class="brisbois_button" uk-icon="icon: twitter; ratio: 1.4"></span></a>
 		</div>
 
 			
@@ -641,38 +652,54 @@
                 { w: 2, h: 2, c: 3, r: 4 }
               ],
 
-              thumbnailAlignment: 'left',
+              thumbnailAlignment: 'center',
 
-              thumbnailL1Height: 250, thumbnailL1Width: 250,
-              thumbnailHeight: 150, thumbnailWidth: 150,
+              thumbnailL1Height: 400, thumbnailL1Width: 400,
+              thumbnailHeight: 350, thumbnailWidth: 'auto',
               thumbnailBaseGridHeight: 80,
               
               thumbnailDisplayTransition: 'slideLeft',
               thumbnailDisplayTransitionDuration: 400,
               thumbnailDisplayInterval: 60,
-              galleryMaxRows: 2,
+              // galleryMaxRows: 2,
+              galleryL1LastRowFull : false,
               galleryLastRowFull : true,
-              galleryDisplayMode: 'pagination',
+              galleryDisplayMode: 'fullContent',
 							galleryPaginationMode : 'dots',
 
-              thumbnailL1GutterWidth: 5,
-              thumbnailL1GutterHeight: 5,
+              thumbnailL1GutterWidth: 0,
+              thumbnailL1GutterHeight: 0,
+              thumbnailGutterWidth: 0,
+              thumbnailGutterHeight: 0,
               thumbnailBorderHorizontal: 0,
               thumbnailBorderVertical: 0,
 
-              thumbnailL1BuildInit2: '.nGY2GThumbnailAlbumTitle_border-left_5px solid #faed26|.nGY2GThumbnailAlbumTitle_margin_20px|.nGY2GThumbnailAlbumTitle_padding_5px|\
-                    title_backgroundColor_rgba(200,200,200,0.8)|title_color_#000',
+              <!-- thumbnailL1BuildInit2: '.nGY2GThumbnailAlbumTitle_border-left_5px solid #faed26|.nGY2GThumbnailAlbumTitle_margin_20px|.nGY2GThumbnailAlbumTitle_padding_5px|\ -->
+                    <!-- title_backgroundColor_rgba(200,200,200,0.8)|title_color_#000', -->
 
-              thumbnailL1HoverEffect2x: 'label_left_-100%_0%|thumbnail_scale_1.00_0.95',
+              <!-- thumbnailL1HoverEffect2x: 'label_left_-100%_0%|thumbnail_scale_1.00_0.95', -->
 
-              galleryBuildInit2 : 'perspective_900px|perspective-origin_50% 150%',
+    <!-- thumbnailHoverEffect2 :     '.ngy2info_opacity_0_1|.ngy2info_scale_5_1', -->
+//    thumbnailBuildInit2:        '.ngy2info_translateY_-30%|.ngy2info_translateX_-30%',
+
+
+              <!-- galleryBuildInit2 : 'perspective_900px|perspective-origin_50% 150% |.ngy2info_translateY_-30%|.ngy2info_translateX_-30%', -->
+
+
+          // first level
+          <!-- thumbnailL1BuildInit2: 'title_font-weight_bold|image_scale_0.8|label_left_-5px|label_text-transform_uppercase|label_top_95%|label_rotateZ_-90deg|label_transform-origin_top left', -->
+thumbnailL1BuildInit2: 'title_color_#fff !important;title_font-weight_bold|image_scale_0.8|label_left_25px|label_top_85%|label_rotateZ_-90deg|label_transform-origin_top left',
+thumbnailL1HoverEffect2: 'imageGrayOn|title_color_#fff !important_#aaaaaa !important|labelOpacity50',
+          // other levels -> no hover effect
+
+
 
               thumbnailHoverEffect2x: 'label_font-size_1em_1.5em|title_backgroundColor_rgba(255,255,255,0.34)_rgba(((35,203,153,0.8)|title_color_#000_#fff|image_scale_1.00_1.10_5000|image_rotateZ_0deg_4deg_5000',
 
               thumbnailToolbarImage : null,
               thumbnailToolbarAlbum: null,
 
-              thumbnailL1Label: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
+              thumbnailL1Label: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '4em', align: 'left', titleMultiLine:true, displayDescription: false},
               thumbnailLabel: { display: false, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
               
               gallerySorting: 'random',
@@ -692,11 +719,17 @@
               viewerTools:    {
                 topRight:  'zoomButton, linkOriginalButton, closeButton'
               },
+              <!-- fnThumbnailInit:            myTnInit, -->
+              locationHash : false,
       
-              touchAnimation: false
+            // touch handling
+            touchAnimation: false,
+            touchAutoOpenDelay: 100
 					});      
 				});			
       });
+      
+      
       
     </script>
 
