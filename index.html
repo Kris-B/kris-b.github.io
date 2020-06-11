@@ -12,10 +12,14 @@
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
 
-				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-				<link href="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
-				<script type="text/javascript" src="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/jquery.nanogallery2.min.js"></script>
+  
+				<link href="C:\Users\pzbe235\Downloads\PERSO\NG2\nanogallery2/css/nanogallery2.css" rel="stylesheet" type="text/css">
+				<!-- <link href="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css"> -->
+				<script type="text/javascript" src="C:\Users\pzbe235\Downloads\PERSO\NG2\nanogallery2\js/jquery.nanogallery2.core.js"></script>
+				<script type="text/javascript" src="C:\Users\pzbe235\Downloads\PERSO\NG2\nanogallery2\js/jquery.nanogallery2.data_flickr.js"></script>
+				<!-- <script type="text/javascript" src="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/jquery.nanogallery2.min.js"></script> -->
 				
         <link href="https://fonts.googleapis.com/css?family=Saira+Condensed:800,400&display=swap" rel="stylesheet">        
 
@@ -59,6 +63,11 @@
           .uk-tab > * > a {
             border-bottom: 5px solid transparent !important;
           }
+
+.uk-slidenav {
+margin-left: 0 !important;
+margin-right: 0 !important;
+}
 
           /* thanks to Joan Leon - https://codepen.io/nucliweb/pen/QEAZaZ */
           @keyframes glitch { 
@@ -413,8 +422,8 @@
 		</div>
 		
 		
-    <div class="uk-padding-small uk-padding-remove-vertical uk-margin-large-left uk-margin-large-right brisbois_tab" style="bottom: 35px; position: absolute; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
-      <div class="" style="transform: scaleX(-1);padding-left:20px;">
+    <div class="uk-padding-small uk-padding-remove-vertical uk-margin-large-left uk-margin-medium-right brisbois_tab" style="bottom: 35px; position: absolute; left:0px; right:0px; overflow-y:auto;overflow-x: hidden;transform: scaleX(-1);">
+      <div class="" style="transform: scaleX(-1);padding-leftX:20px;" class="uk-padding-small">
 
 				<ul uk-tab data-uk-tab="{connect:'#my-id'}">
 					<li class="uk-active"><a href="#" class="uk-heading-large brisbois_shadow"><b>about me</b></a></li>
@@ -657,7 +666,7 @@
 
               thumbnailAlignment: 'center',
 
-              thumbnailL1Height: 400, thumbnailL1Width: 400,
+              thumbnailL1Height: 'XS300 SM300 400', thumbnailL1Width: 'XS300 SM300 400',
               thumbnailHeight: 350, thumbnailWidth: 'auto',
               thumbnailBaseGridHeight: 80,
               
@@ -702,7 +711,7 @@ thumbnailL1HoverEffect2: 'imageGrayOn|title_color_#fff !important_#aaaaaa !impor
               thumbnailToolbarImage : null,
               thumbnailToolbarAlbum: null,
 
-              thumbnailL1Label: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '4em', align: 'left', titleMultiLine:true, displayDescription: false},
+              thumbnailL1Label: { display: true, position:'onBottomOverImage', hideIcons: true, titleFontSize: '3em', align: 'left', titleMultiLine:true, displayDescription: false},
               thumbnailLabel: { display: false, position:'onBottomOverImage', hideIcons: true, titleFontSize: '1em', align: 'left', titleMultiLine:true, displayDescription: false},
               
               gallerySorting: 'random',
