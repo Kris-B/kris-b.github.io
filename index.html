@@ -19,6 +19,7 @@
 				<link href="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
 				<!-- <script type="text/javascript" src="C:\Users\pzbe235\Downloads\PERSO\NG2\nanogallery2\js/jquery.nanogallery2.core.js"></script> -->
 				<!-- <script type="text/javascript" src="C:\Users\pzbe235\Downloads\PERSO\NG2\nanogallery2\js/jquery.nanogallery2.data_flickr.js"></script> -->
+				<!-- <script type="text/javascript" src="C:\Users\pzbe235\Downloads\PERSO\NG2\nanogallery2\js/jquery.nanogallery2.data_nano_photos_provider2.js"></script> -->
 				<script type="text/javascript" src="https://rawgit.com/nanostudio-org/nanogallery2/dev/dist/jquery.nanogallery2.min.js"></script>
 				
         <link href="https://fonts.googleapis.com/css?family=Saira+Condensed:800,400&display=swap" rel="stylesheet">        
@@ -648,10 +649,13 @@
 			jQuery( "#button_nanogallery" ).click(function() {
 				jQuery("#nanogallery2").nanogallery2({
 
-          kind: 'flickr',
-          userID: '34858669@N00',
-          // blackList:'doors|kampuchea|vietnam|thailand|laos|yunnan',
-          allowList: 'urban|people|nature|stones',
+          // kind: 'flickr',
+          // userID: '34858669@N00',
+          // blockList:'doors|kampuchea|vietnam|thailand|laos|yunnan',
+          // allowList: 'urban|people|nature|stones',
+
+          kind: 'nano_photos_provider2',
+          dataProvider: 'https://nano.gallery/chris_home/nano_photos_provider2/nano_photos_provider2.php',
 
               galleryDisplayTransition: 'rotateX',
               galleryDisplayTransitionDuration: 1500,
@@ -667,10 +671,8 @@
 
               thumbnailAlignment: 'center',
 
-              <!-- thumbnailL1Height: 'XS300 SM300 400', thumbnailL1Width: 'XS300 SM300 400', -->
               thumbnailL1Height: '400 xs250 sm250', thumbnailL1Width: '400 xs250 sm250',
-              <!-- thumbnailL1Height: 400, thumbnailL1Width: 400, -->
-              thumbnailHeight: 200, thumbnailWidth: 200,
+              thumbnailHeight: '200 xs250 sm300', thumbnailWidth: '200 xs250 sm300',
               thumbnailBaseGridHeight: 80,
               
               thumbnailDisplayTransition: 'slideLeft',
@@ -684,8 +686,8 @@
 
               thumbnailL1GutterWidth: 2,
               thumbnailL1GutterHeight: 2,
-              thumbnailGutterWidth: 10,
-              thumbnailGutterHeight: 10,
+              thumbnailGutterWidth: '10 xs2 sm2',
+              thumbnailGutterHeight: '10 xs2 sm2',
               thumbnailBorderHorizontal: 10,
               thumbnailBorderVertical: 10,
 
