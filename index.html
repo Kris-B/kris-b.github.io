@@ -701,26 +701,24 @@
               thumbnailBorderVertical: 10,
 
               <!-- thumbnailL1BuildInit2: '.nGY2GThumbnailAlbumTitle_border-left_5px solid #faed26|.nGY2GThumbnailAlbumTitle_margin_20px|.nGY2GThumbnailAlbumTitle_padding_5px|\ -->
-                    <!-- title_backgroundColor_rgba(200,200,200,0.8)|title_color_#000', -->
+              <!-- title_backgroundColor_rgba(200,200,200,0.8)|title_color_#000', -->
 
               <!-- thumbnailL1HoverEffect2x: 'label_left_-100%_0%|thumbnail_scale_1.00_0.95', -->
 
-    <!-- thumbnailHoverEffect2 :     '.ngy2info_opacity_0_1|.ngy2info_scale_5_1', -->
-//    thumbnailBuildInit2:        '.ngy2info_translateY_-30%|.ngy2info_translateX_-30%',
+              <!-- thumbnailHoverEffect2 :     '.ngy2info_opacity_0_1|.ngy2info_scale_5_1', -->
+              //    thumbnailBuildInit2:        '.ngy2info_translateY_-30%|.ngy2info_translateX_-30%',
 
 
               <!-- galleryBuildInit2 : 'perspective_900px|perspective-origin_50% 150% |.ngy2info_translateY_-30%|.ngy2info_translateX_-30%', -->
 
 
-          // first level
-          <!-- thumbnailL1BuildInit2: 'title_font-weight_bold|image_scale_0.8|label_left_-5px|label_text-transform_uppercase|label_top_95%|label_rotateZ_-90deg|label_transform-origin_top left', -->
-thumbnailL1BuildInit2: 'title_color_#fff !important;title_font-weight_bold|image_scale_0.8|label_left_25px|label_top_85%|label_rotateZ_-90deg|label_transform-origin_top left',
-thumbnailL1HoverEffect2: 'imageGrayOn|title_color_#fff !important_#aaaaaa !important|labelOpacity50',
-          // other levels -> no hover effect
+              // first level
+              <!-- thumbnailL1BuildInit2: 'title_font-weight_bold|image_scale_0.8|label_left_-5px|label_text-transform_uppercase|label_top_95%|label_rotateZ_-90deg|label_transform-origin_top left', -->
+              thumbnailL1BuildInit2: 'title_color_#fff !important;title_font-weight_bold|image_scale_0.8|label_left_25px|label_top_85%|label_rotateZ_-90deg|label_transform-origin_top left',
+              thumbnailL1HoverEffect2: 'imageGrayOn|title_color_#fff !important_#aaaaaa !important|labelOpacity50',
 
-
-
-              thumbnailHoverEffect2x: 'label_font-size_1em_1.5em|title_backgroundColor_rgba(255,255,255,0.34)_rgba(((35,203,153,0.8)|title_color_#000_#fff|image_scale_1.00_1.10_5000|image_rotateZ_0deg_4deg_5000',
+	      // other levels -> no hover effect
+              thumbnailHoverEffect2_X: 'label_font-size_1em_1.5em|title_backgroundColor_rgba(255,255,255,0.34)_rgba(((35,203,153,0.8)|title_color_#000_#fff|image_scale_1.00_1.10_5000|image_rotateZ_0deg_4deg_5000',
 
               thumbnailToolbarImage : null,
               thumbnailToolbarAlbum: null,
@@ -731,7 +729,7 @@ thumbnailL1HoverEffect2: 'imageGrayOn|title_color_#fff !important_#aaaaaa !impor
               gallerySorting: 'random',
 
               galleryTheme : { 
-                thumbnail: { titleShadow : 'none', descriptionShadow : 'none', titleColor: '#fff' },
+                thumbnail: { titleShadow : 'none', descriptionShadow : 'none', titleColor: '#fff', background: #fff },
                 navigationBreadcrumb: { background : '#000' },
                 navigationFilter: { background : '#000', backgroundSelected: '#19676B', color: '#eee' },
 								pagination: { background: '#faed26', backgroundSelected: '#f0f', color: '#f0f', borderRadius: '2px', shapeBorder: '5px solid #faed26', shapeColor: '#000', shapeSelectedColor: '#000'}
@@ -743,7 +741,7 @@ thumbnailL1HoverEffect2: 'imageGrayOn|title_color_#fff !important_#aaaaaa !impor
                 minimized: ''
               },
               viewerTools:    {
-                topRight:  'zoomButton, closeButton'
+                topRight:  'fullscreenButton, zoomButton, closeButton'
               },
               <!-- fnThumbnailInit:            myTnInit, -->
               locationHash : false,
