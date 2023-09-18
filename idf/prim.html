@@ -1,0 +1,211 @@
+<html>
+
+<body>
+</body>
+
+<h1>test PRIM</h1>
+
+
+<select name="cars" id="gares">
+  <option value="STIF:StopPoint:Q:7836:">Mairie d'Ivry - métro</option>
+  <option value="STIF:StopPoint:Q:27727:">Mairie d'Ivry - métro</option>
+  <option value="STIF:StopPoint:Q:12379:">Mairie d'Ivry - métro</option>
+  <option value="STIF:StopPoint:Q:463220:">Mairie d'Ivry - 7 (arrivées)</option>
+  <option value="STIF:StopPoint:Q:22396:">Mairie d'Ivry - 7 (départs)</option>
+  <option value="STIF:StopPoint:Q:41315:">Gare RER Ivry - C</option>
+  <option value="STIF:StopPoint:Q:15122:">Ivry RER - Bus Boulangerie</option>
+  <option value="STIF:StopPoint:Q:16918:">Ivry RER - Bus Luxy</option>
+  <option value="STIF:StopPoint:Q:39570:">Ivry - Bus Epinettes</option>
+  <option value="STIF:StopPoint:Q:22365:">Place d'Italie - 7 Ivry-Villejuif</option>
+  <option value="STIF:StopPoint:Q:463026:">Place d'Italie - 7 La Courneuve</option>
+  <option value="STIF:StopPoint:Q:41227:">Issy-val-de-Seine - C</option>
+  <option value="STIF:StopPoint:Q:471460:">Issy-val-de-Seine - C</option>
+  <option value="STIF:StopPoint:Q:472985:">Issy-val-de-Seine - C</option>
+</select>
+
+<button id="btn">go</button>
+
+<div id="result-msg" style="border:1px solid #555; margin: 4px; padding: 4px;"></div>
+<div id="result" style="border:1px solid #555; margin: 4px; padding: 4px;"></div>
+
+
+
+<script>
+var baseUrl = "https://prim.iledefrance-mobilites.fr/marketplace";
+var output = "";
+
+document.getElementById("btn").onclick = function() {  
+  selectElement = document.querySelector('#gares');
+  output = selectElement.value;
+  //console.log(output);
+
+  getData();
+  getMessage();
+};  
+
+
+function getMessage() {
+
+  var myHeaders = new Headers();
+  myHeaders.append("Accept", "application/json");
+  myHeaders.append("apiKey", "nvlpRU4dkTCQAYSaNdMltbufM7hN0Rp0");
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  var url = baseUrl + "/general-message?StopPointRef=" + output;
+
+  fetch( url, requestOptions)
+    .then(response => response.text())
+    .then(result => { 
+      var r = JSON.parse(result);
+      console.dir(r)
+      var s = "";
+      r.Siri.ServiceDelivery.GeneralMessageDelivery[0].InfoMessage.forEach( function(item, idx) {
+    
+        s += item.Content.Message[0].MessageText.value + "<br>";
+      });
+      
+      document.getElementById("result-msg").innerHTML = s;
+
+    
+    })
+    .catch(error => console.log('error', error));
+  
+
+
+}
+
+  function getData() {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("apiKey", "nvlpRU4dkTCQAYSaNdMltbufM7hN0Rp0");
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+
+    var url = baseUrl + "/stop-monitoring?MonitoringRef=" + output;
+
+    // fetch("https://prim.iledefrance-mobilites.fr/marketplace/stop-monitoring?MonitoringRef=STIF:StopPoint:Q:12379:", requestOptions)
+    fetch( url, requestOptions)
+      .then(response => response.text())
+      .then(result => { 
+        var r = JSON.parse(result);
+        console.dir(r)
+        var s = "";
+        r.Siri.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.forEach( function(item, idx) {
+
+        console.log("---");
+        console.dir( item );
+
+        var dt;
+        var eat = item.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime;
+        if( eat !== undefined ) {
+          eat = new Date(eat);
+        }
+        var edt = item.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime;
+        if( edt !== undefined ) {
+          edt = new Date(edt);
+        }
+      
+
+      
+      console.log(edt + " - " + eat);
+        // datetime arrivée = datetime départ --> train ne fait que passer sans s'arrêter
+        if( item.ItemIdentifier.startsWith("SNCF") && edt !== undefined && eat !== undefined ) {
+          if( edt.getTime() === eat.getTime() ) {
+            return;
+          }
+        }
+        
+        if( eat !== undefined ) {
+          dt = eat;
+        }
+        else
+          if( edt !== undefined ) {
+            dt = edt;
+          }
+          else {
+            dt = new Date(item.MonitoredVehicleJourney.MonitoredCall.AimedArrivalTime);
+          }
+
+        if( dt < new Date() ) {
+          return
+        }
+        
+      
+
+
+         // voie
+        var voie = ""
+        if( item.MonitoredVehicleJourney.MonitoredCall.ArrivalPlatformName ) {      //.value != "" ) {
+          voie = item.MonitoredVehicleJourney.MonitoredCall.ArrivalPlatformName.value;
+          s += " [voie " + voie + "] ";
+        }
+// console.log(voie);
+       
+        
+        if( item.MonitoredVehicleJourney.JourneyNote.length > 0 ) {
+          s += "<b>";
+          item.MonitoredVehicleJourney.JourneyNote.forEach( function(note, i) {
+            s+= note.value + " ";
+          });
+          s += "</b>";
+        }
+        
+        s += "<b>" + item.MonitoredVehicleJourney.OperatorRef.value.match(new RegExp('::' + "(.*)" + ':'))[1];
+        
+        // status
+        if( item.MonitoredVehicleJourney.MonitoredCall.ArrivalStatus != "" ) {
+          s += " [" + item.MonitoredVehicleJourney.MonitoredCall.ArrivalStatus + "]";
+        }
+        else {
+          if( item.MonitoredVehicleJourney.MonitoredCall.DepartureStatus != "" ) {
+            s += " [" + item.MonitoredVehicleJourney.MonitoredCall.DepartureStatus + "]";
+          }
+        }
+        s += "</b><br>";
+        
+        var d = "";
+        item.MonitoredVehicleJourney.DestinationName.forEach( function(dest, i) {
+          d += dest.value + " ";
+        });
+        s += "&nbsp;&nbsp;" + d + "<br>";
+        
+        <!-- s += "&nbsp;&nbsp;" + new Date(item.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime).toLocaleString() + "<br>"; -->
+        if( !item.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime ) {
+          // s += "&nbsp;&nbsp;" + new Date(item.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime).toLocaleString() + "<br>";
+        }
+        else {
+          // s += "&nbsp;&nbsp;" + new Date(item.MonitoredVehicleJourney.MonitoredCall.ExpectedArrivalTime).toLocaleString() + "<br>";
+        }
+        
+        s += "&nbsp;&nbsp;" + dt.toLocaleString() + "<br>";
+        // s += "&nbsp;&nbsp;" + dt.toLocaleString() + " ("+ edt + " - " + eat+"<br>";
+        
+        
+        if( item.MonitoredVehicleJourney.MonitoredCall.VehicleAtStop ) {
+          s += "&nbsp;&nbsp; <span style='color:#A00;'>à quai</span><br>";
+        }
+      //}
+       });
+      document.getElementById("result").innerHTML = s;
+
+    
+    })
+    .catch(error => console.log('error', error));
+  }
+
+
+</script>
+
+
+</html>
